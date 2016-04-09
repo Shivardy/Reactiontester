@@ -1,0 +1,105 @@
+<html>
+<head><title>Reaction Tester</title>
+   <link rel="icon" href="suramshivareddy.com/photo.png" type="image/gif">
+    <meta name="author" content="Suram ShivaReddy" />
+    <meta name="keywords"  content="ShivaReddy, Suram ShivaReddy, Suram Shiva, Shiva R'dy" />
+<meta name="description" content="I'm Suram ShivaReddy a Webdeveloper from India (Hyderabad). If you are looking for a
+good looking Responsive website, I can help you with it">
+<meta charset="utf-8"/>
+<meta http-equiv="content-type" content=text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<style>
+
+#box{
+	width:30px;
+	height:30px;
+	background-color:orange;
+	border-radius:15px;
+	display:none;
+	position:relative;
+	
+	}
+	body{
+	overflow:hidden;
+	font-family:verdana;
+	text-align=center;
+	background-color:yellow;
+	}
+	.p{
+	text-align:center;
+	font-weight:bold;
+	}
+	#main{
+margin:0;
+height:100%;
+-webkit-transition:background 1.5s ease;
+
+}
+.container-fluid{
+overflow:hidden;
+}
+</style>
+
+</head>
+
+<body id="main">
+<div id="container-fluid">
+<h1 align="center" style="color:#399;">Test Your Reactions</h1>
+
+<p class="p" >Click on the Boxes and Circles as fast as you can!!</p>
+<p>Your Reaction Time: <span id="time">0</span>s</p>
+<div id="box"></div>
+
+<script type="text/javascript">
+var element=document.getElementById("main");
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+setInterval(function(){
+element.style.background=getRandomColor();
+},1500);
+var clickedtime; var createdtime;
+var reacttime;
+function makebox(){
+
+
+var time = Math.random();
+time=time*300;
+setTimeout(function(){
+if(Math.random()>0.8){
+document.getElementById("box").style.borderRadius="100px";}
+var top=Math.random();
+top=top*40;
+var left=Math.random();
+left=left*90;
+
+document.getElementById("box").style.top=top+"vh";
+document.getElementById("box").style.left=left+"%";
+document.getElementById("box").style.backgroundColor=getRandomColor();
+
+document.getElementById("box").style.display="block";
+createdtime=Date.now();
+
+
+},time);
+}
+document.getElementById("box").onclick=function(){
+clickedtime=Date.now();
+reacttime=(clickedtime-createdtime)/1000;
+document.getElementById("time").innerHTML=reacttime;
+this.style.display="none";
+
+makebox();
+}
+makebox();
+</script>
+</div>
+</body>
+
+</html>
